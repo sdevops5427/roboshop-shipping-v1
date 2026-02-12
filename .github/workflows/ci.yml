@@ -4,38 +4,8 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 jobs:
-  build:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - name: clean package
-        run: mvn clean package
-      - name: upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: shipping-jar
-          path: target/shipping-1.0.jar
-          retention-days: 1
-  test:
-    needs: build
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo mvn test
-  docker:
-    runs-on: self-hosted
-    needs: test
-    steps:
-      - uses: actions/checkout@v4
-      - name: download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: shipping-jar
-          path: ./
-      - name: docker login
-        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 389841108590.dkr.ecr.us-east-1.amazonaws.com
-      - run: docker build -t 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping .
-        name: docker build
-      - run: docker push 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping
-        name: docker push
+  ci_cd_common:
+    uses: Sandeepkumar0088/reusable-github-actions/.github/workflows/ci-cd-direct-helm.yml@main
+    with:
+      component: shipping
+      appType: java
