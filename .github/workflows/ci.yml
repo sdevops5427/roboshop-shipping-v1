@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   ci_cd_common:
-    uses: Sandeepkumar0088/reusable-github-actions/.github/workflows/ci-cd-direct-helm.yml@main
+    uses: Sandeepkumar0088/reusable-github-actions/.github/workflows/ci.yml@main
     with:
       component: shipping
       appType: java
