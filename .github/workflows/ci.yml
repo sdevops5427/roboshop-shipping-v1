@@ -10,4 +10,3 @@ jobs:
     with:
       component: shipping
       appType: java
-
