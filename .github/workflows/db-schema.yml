@@ -1,0 +1,16 @@
+name: Shipping DB Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cd db
+          docker build -t 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image .
+        name: Docker Build
+      - run: docker push 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
+        name: Docker push
