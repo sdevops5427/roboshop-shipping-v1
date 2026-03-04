@@ -11,8 +11,8 @@ WORKDIR       /app
 ADD           --chown=roboshop --chmod=444 https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip /app/
 RUN           unzip newrelic-java.zip
 COPY          ./shipping-1.0.jar /app/shipping.jar
-COPY          ./nrb64 /app/
-RUN           cat nrb64 |base64 --decode >newrelic/newrelic.yml
-ENTRYPOINT    ["java", "-XX:MaxRAMPercentage=95.0", "-XX:InitialRAMPercentage=50.0", "-javaagent:/app/newrelic/newrelic.jar", "-jar", "/app/shipping.jar"]
+#COPY          ./nrb64 /app/
+#RUN           cat nrb64 |base64 --decode >newrelic/newrelic.yml
+ENTRYPOINT    ["java", "-XX:MaxRAMPercentage=95.0", "-XX:InitialRAMPercentage=50.0", "-jar", "/app/shipping.jar"]
 
 ####
