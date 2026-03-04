@@ -3,4 +3,4 @@ RUN           useradd -d /app -m roboshop
 USER          roboshop
 WORKDIR       /app
 COPY          ./shipping-1.0.jar /app/shipping.jar
-ENTRYPOINT    ["java", "-jar", "/app/shipping.jar"]
+ENTRYPOINT    ["java","-XX:MaxRAMPercentage=95.0","-XX:InitialRAMPercentage=90.0", "-jar", "/app/shipping.jar"]
