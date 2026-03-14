@@ -14,5 +14,3 @@ jobs:
         name: Docker Build
       - run: docker push 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
         name: Docker push
-
-
