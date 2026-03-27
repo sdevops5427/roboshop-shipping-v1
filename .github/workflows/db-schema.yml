@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           cd db
-          docker build -t 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image .
+          docker build -t 012751250483.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image .
         name: Docker Build
-      - run: docker push 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
+      - run: docker push 012751250483.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
         name: Docker push
