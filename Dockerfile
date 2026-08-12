@@ -1,4 +1,4 @@
-FROM          openjdk:17-ea-17-slim
+FROM          openjdk:17-ea-17
 RUN           sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list && \
               sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list && \
               sed -i '/buster-updates/d' /etc/apt/sources.list && \
