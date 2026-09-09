@@ -1,0 +1,29 @@
+pipeline {
+
+    agent any
+
+    stages {
+        stage('CheckOut') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/sdevops5427/roboshop-shipping-v1.git'
+            }
+        }
+        stage('Build Image') {
+            steps {
+                sh "cd db"
+                sh "docker build -t shipping-db-image ."
+            }
+        }
+        stage('Tag Image') {
+            steps {
+                sh "docker tag shipping-db-image roboshop0088.azurecr.io/shipping-db-image:latest"
+            }
+        }
+        stage('Push Image') {
+            steps {
+                sh "docker push roboshop0088.azurecr.io/shipping-db-image"
+            }
+        }
+    }
+}
